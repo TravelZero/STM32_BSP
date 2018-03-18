@@ -13,7 +13,7 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f1xx_hal.h"
+#include "stm32f4xx_hal.h"
 #include "data_type.h"
 
 #define UART_DMA	0
@@ -38,8 +38,13 @@ typedef struct
 	void UART_TIRec_Callback(UART_HandleTypeDef *huart);
 #endif
 
-void Uart_Proc(void);
+void Set_Uart(UART_HandleTypeDef *huart, u32 BaudRate, u8 WordLength, u8 StopBits, u8 Parity);
 u16	 Uart_Send(UART_HandleTypeDef *huart, u8 *buff, u16 size);
+u32  Get_Baudrate(UART_HandleTypeDef *huart);
+u8   Get_Word_Length(UART_HandleTypeDef *huart);
+u8   Get_Stop_Bits(UART_HandleTypeDef *huart);
+u8   Get_Parity(UART_HandleTypeDef *huart);
+void Uart_Proc(void);
 
 #ifdef __cplusplus
 }
